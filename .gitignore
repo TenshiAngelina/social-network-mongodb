@@ -2,3 +2,4 @@
 node_modules
 INSTRUCTIONS.md
 package-lock.json
+.env
