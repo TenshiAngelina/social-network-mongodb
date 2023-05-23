@@ -1,14 +1,14 @@
 const express = require('express');
 const apiRoutes = require('./routes/apiroutes')
-
+const DB = require("./config/connection")
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({extended:true}))
 // app.use(express.static)
-app.use('/routes', apiRoutes)
+app.use(apiRoutes)
 // Connection string to local instance of MongoDB
 // const connectionStringURI = `mongodb://127.0.0.1:27017`;
 
@@ -18,4 +18,6 @@ let db;
 // Create variable to hold our database name
 const dbName = 'socialDB';
 
-app.listen(port, () => console.log(`listening at ${PORT}`))
+DB.once("open", () => {
+  app.listen(PORT, () => console.log(`listening at ${PORT}`))
+})
