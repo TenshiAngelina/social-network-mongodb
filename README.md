@@ -17,11 +17,11 @@ This application needs to install the corresponding dependecies to work, this ca
 
 ## Usage
 
-For a detailed walkthrough you can check the following [video]()
+For a detailed walkthrough you can check the following [video](https://youtu.be/J6XA8n_U0yA).
 
 ## Credits
 
-The regex used was taken from [here](https://stackoverflow.com/questions/18022365/mongoose-validate-email-syntax)
+The regex used was taken from [here](https://stackoverflow.com/questions/18022365/mongoose-validate-email-syntax).
 
 ## License
 
