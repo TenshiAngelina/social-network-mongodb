@@ -34,8 +34,19 @@ const userController = {
         console.log(err);
         res.status(500).json(err);
       });
+
   },
 
+  createUser(req, res) {
+    User.create(req.body)
+      .then((dbUserData) => {
+        res.json(dbUserData);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  },
 
 
   // async getSingleUser(req, res) {
@@ -90,9 +101,9 @@ const userController = {
     console.log(req.body);
 
     try {
-      const user = await Thought.findOneAndUpdate(
+      const user = await User.findOneAndUpdate(
         { _id: req.params.userId },
-        { $addToSet: { friends: req.body } },
+        { $addToSet: { friends: req.params.friendId } },
         { runValidators: true, new: true }
       );
 
@@ -102,7 +113,7 @@ const userController = {
           .json({ message: 'No thought found with that ID :(' });
       }
 
-      res.json(thought);
+      res.json(user);
     } catch (err) {
       res.status(500).json(err);
     }
